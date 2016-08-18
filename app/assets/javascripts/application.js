@@ -22,15 +22,6 @@ function clipboard(ID_value){
       copyToClipboardMsg(document.getElementById(ID_value), "msg");
   });
 
-  document.getElementById("copyButton2").addEventListener("click", function() {
-      copyToClipboardMsg(document.getElementById("copyTarget2"), "msg");
-  });
-
-  document.getElementById("pasteTarget").addEventListener("mousedown", function() {
-      this.value = "";
-  });
-
-
   function copyToClipboardMsg(elem, msgElem) {
       var succeed = copyToClipboard(elem);
       var msg;
@@ -42,10 +33,6 @@ function clipboard(ID_value){
       if (typeof msgElem === "string") {
           msgElem = document.getElementById(msgElem);
       }
-      msgElem.innerHTML = msg;
-      setTimeout(function() {
-          msgElem.innerHTML = "";
-      }, 2000);
   }
 
   function copyToClipboard(elem) {
