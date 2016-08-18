@@ -6,7 +6,7 @@
   <thead>
     <tr>
       <th>Username</th>
-      <th>Password</th>
+      <th>Password Press button to copy password</th>
       <th>Status</th>
       <th>User</th>
       <th>Last open/close</th>
@@ -18,7 +18,7 @@
     <% @players.each do |player| %>
       <tr>
         <td><%= player.username %></td>
-        <td><%= player.password %></td>
+        <td><button id="<%= player.id %>", onClick="clipboard(<%= player.id %>)", class="btn btn-info"><%= player.password %></button></td>
         <td><%= player.open ? 'open' : 'close' %></td>
         <td><%= player.user.name %></td>
         <td><%= player.updated_at.strftime("%d %B, %I.%M %p") %></td>
