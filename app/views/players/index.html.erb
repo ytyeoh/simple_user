@@ -18,7 +18,7 @@
       <% if Time.now - player.updated_at <= 30.minutes %>
         <tr class="danger">
       <% else %>
-        <tr>
+        <tr class="info">
       <% end %>
           <td><%= player.username %></td>
           <td>
