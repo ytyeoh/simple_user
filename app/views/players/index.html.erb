@@ -15,7 +15,11 @@
 
     <tbody>
       <% @players.each do |player| %>
+      <% if Time.now - player.updated_at <= 30.minutes %>
+        <tr class="danger">
+      <% else %>
         <tr>
+      <% end %>
           <td><%= player.username %></td>
           <td>
             <button id="<%= player.id %>" class= 'btn btn-info' onclick="clipboard(document.getElementById('<%= player.id %>').innerHTML)"><%= player.password %></button></td>
