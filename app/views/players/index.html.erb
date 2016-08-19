@@ -1,6 +1,16 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Players</h1>
+<table class="table table-responsive">
+  <thead>
+    <tr>
+      <td class="success">safe to open</td>
+      <td class="warning">cannot bot penang</td>
+      <td class="danger">cannot bot kl</td>
+      <td class="info">safe for tp hunt pokemon</td>
+    </tr>
+  </thead>
+</table>
 <div class="table-responsive">
   <table class="table table-bordered table-striped table-responsive">
     <thead>
@@ -15,10 +25,14 @@
 
     <tbody>
       <% @players.each do |player| %>
-      <% if Time.now - player.updated_at <= 30.minutes %>
+      <% if Time.now - player.updated_at <= 2.hour %>
         <tr class="danger">
-      <% else %>
+      <% elsif Time.now - player.updated_at <= 30.minutes %>
+        <tr class="warning">
+      <% elsif Time.now - player.updated_at >= 3.hour %>
         <tr class="info">
+      <% else %>
+        <tr class="success">
       <% end %>
           <td><%= player.username %></td>
           <td>
@@ -29,13 +43,12 @@
             <td><%= link_to 'Close', edit_player_path(player), class: 'btn btn-info' %></td>
           <% end %>
           <td><%= player.user.name %></td>
-          <td><%= player.updated_at.strftime("%d/%m %I:%M%p") %></td>
+          <td><%= distance_of_time_in_words(player.updated_at, Time.now ) %> ago</td>
         </tr>
       <% end %>
     </tbody>
   </table>
 </div>
-
 
 <br>
 
