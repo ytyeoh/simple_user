@@ -18,7 +18,8 @@
     <% @players.each do |player| %>
       <tr>
         <td><%= player.username %></td>
-        <td><button class='my_clip_button btn btn-info' data-clipboard-target='fe_text' data-clipboard-text='<%= player.password %>' id='d_clip_button' title='Click me to copy to clipboard.'><b>Press to copy</b></button></td>
+        <td>
+          <button id="<%= player.id %>" class= 'btn btn-info' onclick="clipboard(document.getElementById('<%= player.id %>').innerHTML)"><%= player.password %></button></td>
         <td><%= player.open ? 'open' : 'close' %></td>
         <td><%= player.user.name %></td>
         <td><%= player.updated_at.strftime("%d %B, %I.%M %p") %></td>
@@ -30,16 +31,11 @@
 </table>
 
 <br>
-
+<button id="demo" onclick="copyToClipboard(document.getElementById('demo').innerHTML)">This is what I want to copy</button>
 <%= link_to 'New Player', new_player_path %>
 
 <script>
-  $(document).ready(function() {
-    var clip = new ZeroClipboard($("#d_clip_button"))
-  });
-
-  $("#clear-test").on("click", function(){
-    $("#fe_text").val("Copy me!");
-    $("#testarea").val("");
-  });
+function clipboard(ID_value){
+  window.prompt("Copy to clipboard: Ctrl+C, Enter", ID_value);
+}
 </script>

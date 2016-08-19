@@ -14,7 +14,10 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap
-//= require zeroclipboard
 //= require_tree .
 
+
+function clipboard(ID_value){
+  window.prompt("Copy to clipboard: Ctrl+C, Enter", ID_value);
+}
 
