@@ -39,9 +39,9 @@
           <td>
             <button id="<%= player.id %>" class= 'btn btn-info' onclick="clipboard(document.getElementById('<%= player.id %>').innerHTML)"><%= player.password %></button></td>
           <% if player.open %>
-            <td><%= link_to 'Open', edit_player_path(player), class: 'btn btn-danger' %></td>
+            <td><%= link_to 'Online', edit_player_path(player), class: 'btn btn-danger' %></td>
           <% else %>
-            <td><%= link_to 'Close', edit_player_path(player), class: 'btn btn-info' %></td>
+            <td><%= link_to 'Offline', edit_player_path(player), class: 'btn btn-info' %></td>
           <% end %>
           <td><%= player.user.name %></td>
           <td><%= distance_of_time_in_words(player.updated_at, Time.now ) %> ago</td>
