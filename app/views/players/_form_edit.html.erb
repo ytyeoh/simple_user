@@ -10,6 +10,11 @@
       </ul>
     </div>
   <% end %>
+  
+  <div class="field">
+    <%= f.label :note %>
+    <%= text_area(:player, :note, cols: 30, rows: 10) %>
+  </div>
 
   <div class="field">
     <%= f.label :open %>

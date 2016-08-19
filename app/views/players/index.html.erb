@@ -20,6 +20,7 @@
         <th>Status</th>
         <th>User</th>
         <th>Last open/close</th>
+        <th>Note</th>
       </tr>
     </thead>
 
@@ -44,6 +45,7 @@
           <% end %>
           <td><%= player.user.name %></td>
           <td><%= distance_of_time_in_words(player.updated_at, Time.now ) %> ago</td>
+          <td><%= player.note %></td>
         </tr>
       <% end %>
     </tbody>
