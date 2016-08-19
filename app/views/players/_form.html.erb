@@ -28,7 +28,10 @@
 
   <div class="field">
     <%= f.label :open %>
-    <%= f.check_box :open %>
+    <label class="switch">
+      <%= f.check_box :open %>
+      <div class="slider round"></div>
+    </label>
   </div>
 
   <div class="actions">
