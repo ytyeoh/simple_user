@@ -1,38 +1,39 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Players</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Username</th>
-      <th>Password</th>
-      <th>Status</th>
-      <th>User</th>
-      <th>Last open/close</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @players.each do |player| %>
+<div class="table-responsive">
+  <table class="table table-bordered table-striped">
+    <thead>
       <tr>
-        <td><%= player.username %></td>
-        <td>
-          <button id="<%= player.id %>" class= 'btn btn-info' onclick="clipboard(document.getElementById('<%= player.id %>').innerHTML)"><%= player.password %></button></td>
-        <td><%= player.open ? 'open' : 'close' %></td>
-        <td><%= player.user.name %></td>
-        <td><%= player.updated_at.strftime("%d %B, %I.%M %p") %></td>
-        <td><%= link_to 'Show', player %></td>
-        <td><%= link_to 'Edit', edit_player_path(player) %></td>
+        <th>Username</th>
+        <th>Password</th>
+        <th>Status</th>
+        <th>User</th>
+        <th>Last open/close</th>
+        <th>Action</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+
+    <tbody>
+      <% @players.each do |player| %>
+        <tr>
+          <td><%= player.username %></td>
+          <td>
+            <button id="<%= player.id %>" class= 'btn btn-info' onclick="clipboard(document.getElementById('<%= player.id %>').innerHTML)"><%= player.password %></button></td>
+          <td><%= player.open ? 'open' : 'close' %></td>
+          <td><%= player.user.name %></td>
+          <td><%= player.updated_at.strftime("%d/%m %I:%M%p") %></td>
+          <td><%= link_to 'Edit', edit_player_path(player), class: 'btn btn-info' %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
 
 <br>
-<button id="demo" onclick="copyToClipboard(document.getElementById('demo').innerHTML)">This is what I want to copy</button>
-<%= link_to 'New Player', new_player_path %>
+
+<%= link_to 'New Player', new_player_path, class: 'btn btn-success'%>
 
 <script>
 function clipboard(ID_value){
