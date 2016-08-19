@@ -2,7 +2,7 @@
 
 <h1>Players</h1>
 <div class="table-responsive">
-  <table class="table table-bordered table-striped">
+  <table class="table table-bordered table-striped table-responsive">
     <thead>
       <tr>
         <th>Username</th>
@@ -10,7 +10,6 @@
         <th>Status</th>
         <th>User</th>
         <th>Last open/close</th>
-        <th>Action</th>
       </tr>
     </thead>
 
@@ -20,10 +19,9 @@
           <td><%= player.username %></td>
           <td>
             <button id="<%= player.id %>" class= 'btn btn-info' onclick="clipboard(document.getElementById('<%= player.id %>').innerHTML)"><%= player.password %></button></td>
-          <td><%= player.open ? 'open' : 'close' %></td>
+          <td><%= link_to player.open ? 'open' : 'close', edit_player_path(player), class: 'btn btn-info' %></td>
           <td><%= player.user.name %></td>
           <td><%= player.updated_at.strftime("%d/%m %I:%M%p") %></td>
-          <td><%= link_to 'Edit', edit_player_path(player), class: 'btn btn-info' %></td>
         </tr>
       <% end %>
     </tbody>

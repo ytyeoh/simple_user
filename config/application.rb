@@ -12,6 +12,5 @@ module Puser
     # -- all .rb files in that directory are automatically loaded.
 
     config.time_zone = 'Asia/Kuala_Lumpur'
-    config.active_record.default_timezone = :local
   end
 end
