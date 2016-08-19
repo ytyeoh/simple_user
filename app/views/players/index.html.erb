@@ -19,7 +19,11 @@
           <td><%= player.username %></td>
           <td>
             <button id="<%= player.id %>" class= 'btn btn-info' onclick="clipboard(document.getElementById('<%= player.id %>').innerHTML)"><%= player.password %></button></td>
-          <td><%= link_to player.open ? 'open' : 'close', edit_player_path(player), class: 'btn btn-info' %></td>
+          <% if player.open %>
+            <td><%= link_to 'Open', edit_player_path(player), class: 'btn btn-danger' %></td>
+          <% else %>
+            <td><%= link_to 'Close', edit_player_path(player), class: 'btn btn-info' %></td>
+          <% end %>
           <td><%= player.user.name %></td>
           <td><%= player.updated_at.strftime("%d/%m %I:%M%p") %></td>
         </tr>
