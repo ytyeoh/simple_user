@@ -21,11 +21,11 @@ ActiveRecord::Schema.define(version: 20160821050706) do
     t.integer  "account"
     t.boolean  "open"
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
     t.text     "note"
     t.string   "email"
-    t.boolean  "ban"
+    t.boolean  "ban",        default: false
   end
 
   create_table "roles", force: :cascade do |t|
