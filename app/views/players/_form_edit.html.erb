@@ -11,6 +11,16 @@
     </div>
   <% end %>
   
+  <% if current_user.has_role? :admin %>
+    <div class="field">
+      <%= f.label :ban %>
+      <label class="switch">
+        <%= f.check_box :ban %>
+        <div class="slider round"></div>
+      </label>
+    </div>
+  <% end %>
+  
   <div class="field">
     <%= f.label :note %>
     <%= text_area(:player, :note, cols: 30, rows: 10) %>

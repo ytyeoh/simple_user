@@ -26,27 +26,29 @@
 
     <tbody>
       <% @players.each do |player| %>
-      <% if Time.now - player.updated_at <= 2.hour %>
-        <tr class="danger">
-      <% elsif Time.now - player.updated_at <= 30.minutes %>
-        <tr class="warning">
-      <% elsif Time.now - player.updated_at >= 3.hour %>
-        <tr class="info">
-      <% else %>
-        <tr class="success">
-      <% end %>
-          <td><%= player.username %></td>
-          <td>
-            <button id="<%= player.id %>" class= 'btn btn-info' onclick="clipboard(document.getElementById('<%= player.id %>').innerHTML)"><%= player.password %></button></td>
-          <% if player.open %>
-            <td><%= link_to 'Online', edit_player_path(player), class: 'btn btn-danger' %></td>
-          <% else %>
-            <td><%= link_to 'Offline', edit_player_path(player), class: 'btn btn-info' %></td>
-          <% end %>
-          <td><%= player.user.name %></td>
-          <td><%= distance_of_time_in_words(player.updated_at, Time.now ) %> ago</td>
-          <td><%= player.note %></td>
-        </tr>
+      <% if player.ban == false %>
+        <% if Time.now - player.updated_at <= 2.hour %>
+          <tr class="danger">
+        <% elsif Time.now - player.updated_at <= 30.minutes %>
+          <tr class="warning">
+        <% elsif Time.now - player.updated_at >= 3.hour %>
+          <tr class="info">
+        <% else %>
+          <tr class="success">
+        <% end %>
+            <td><%= player.username %></td>
+            <td>
+              <button id="<%= player.id %>" class= 'btn btn-info' onclick="clipboard(document.getElementById('<%= player.id %>').innerHTML)"><%= player.password %></button></td>
+            <% if player.open %>
+              <td><%= link_to 'Online', edit_player_path(player), class: 'btn btn-danger' %></td>
+            <% else %>
+              <td><%= link_to 'Offline', edit_player_path(player), class: 'btn btn-info' %></td>
+            <% end %>
+            <td><%= player.user.name %></td>
+            <td><%= distance_of_time_in_words(player.updated_at, Time.now ) %> ago</td>
+            <td><%= player.note %></td>
+          </tr>
+        <% end %>
       <% end %>
     </tbody>
   </table>

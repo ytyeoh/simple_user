@@ -22,6 +22,11 @@
   </div>
 
   <div class="field">
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+  </div>
+
+  <div class="field">
     <%= f.label :account %>
     <%= f.select :account, :collection => Player.accounts.keys.to_a %>
   </div>
