@@ -27,11 +27,11 @@
     <tbody>
       <% @players.each do |player| %>
       <% if player.ban == false %>
-        <% if Time.now - player.updated_at <= 2.hour || player.open %>
+        <% if Time.now - player.updated_at <= 2.hour %>
           <tr class="danger">
-        <% elsif Time.now - player.updated_at <= 30.minutes || player.open %>
+        <% elsif Time.now - player.updated_at <= 30.minutes %>
           <tr class="warning">
-        <% elsif Time.now - player.updated_at >= 3.hour && player.open!%>
+        <% elsif Time.now - player.updated_at >= 3.hour %>
           <tr class="info">
         <% else %>
           <tr class="success">
