@@ -43,6 +43,7 @@ class PlayersController < ApplicationController
   # PATCH/PUT /players/1
   # PATCH/PUT /players/1.json
   def update
+    @player.last_open_id = current_user.id
     respond_to do |format|
       if @player.update(player_params)
         format.html { redirect_to players_url, notice: 'Player was successfully updated.' }
