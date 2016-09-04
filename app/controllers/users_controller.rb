@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:edit, :update]
+  before_action :content_authenticated
+
   def index
     @users = User.all
   end
@@ -31,5 +33,11 @@ class UsersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
       params.require(:user).permit(:confirm)
+    end
+
+    def content_authenticated
+      unless (current_user.has_role? :client) || (current_user.has_role? :admin)
+        redirect_to out_path
+      end
     end
 end
