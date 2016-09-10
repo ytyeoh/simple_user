@@ -28,7 +28,7 @@ class PlayersController < ApplicationController
   def create
     @player = Player.new(player_params)
     @player.user_id = current_user.id
-
+    @player.last_open_id = current_user.id
     respond_to do |format|
       if @player.save
         format.html { redirect_to players_url, notice: 'Player was successfully created.' }
@@ -43,6 +43,7 @@ class PlayersController < ApplicationController
   # PATCH/PUT /players/1
   # PATCH/PUT /players/1.json
   def update
+    @player.last_open_id = current_user.id
     respond_to do |format|
       if @player.update(player_params)
         format.html { redirect_to players_url, notice: 'Player was successfully updated.' }
