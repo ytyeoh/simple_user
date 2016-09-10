@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:edit, :update]
   before_action :content_authenticated
+  before_action :set_user, only: [:edit, :update]
+
 
   def index
     @users = User.all
@@ -36,7 +37,7 @@ class UsersController < ApplicationController
     end
 
     def content_authenticated
-      unless (current_user.has_role? :client) || (current_user.has_role? :admin)
+      unless (current_user.has_role? :admin)
         redirect_to out_path
       end
     end
