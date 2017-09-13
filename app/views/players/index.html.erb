@@ -32,8 +32,11 @@
         <% end %>
             <td><%= player.username %></td>
             <td>
-              <button id="<%= player.id %>" class= 'btn btn-info' onclick="clipboard(document.getElementById('<%= player.id %>').innerHTML)"><%= player.password %></button></td>
-              <td><%= link_to player.email, edit_player_path(player), class: 'btn btn-danger' %></td>
+              <button id="<%= player.id %>" class= 'btn btn-info' onclick="clipboard(document.getElementById('<%= player.id %>').innerHTML)"><%= player.password %></button>
+            </td>
+            <td>
+              <button id="<%= player.id %>" class= 'btn btn-info' onclick="clipboard(document.getElementById('<%= player.id %>').innerHTML)"><%= player.email %></button>
+            </td>
             <td><%= player.user.name %></td>
             <td><%= link_to 'Edit', edit_player_path(player), class: 'btn btn-info' %></td>
             <td><%= player.note %></td>
