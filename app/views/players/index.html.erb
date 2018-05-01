@@ -35,7 +35,7 @@
               <button id="<%= player.id %>" class= 'btn btn-info' onclick="clipboard(document.getElementById('<%= player.id %>').innerHTML)"><%= player.password %></button>
             </td>
             <td>
-              <button id="<%= player.id %>" class= 'btn btn-info' onclick="clipboard(document.getElementById('<%= player.id %>').innerHTML)"><%= player.email %></button>
+              <button id="a<%= player.id %>" class= 'btn btn-info' onclick="emailClipboard(document.getElementById('a<%= player.id %>').innerHTML)"><%= player.email %></button>
             </td>
             <td><%= player.user.name %></td>
             <td><%= link_to 'Edit', edit_player_path(player), class: 'btn btn-info' %></td>
@@ -53,6 +53,9 @@
 
 <script>
 function clipboard(ID_value){
+  window.prompt("Copy to clipboard: Ctrl+C, Enter", ID_value);
+}
+function emailClipboard(ID_value){
   window.prompt("Copy to clipboard: Ctrl+C, Enter", ID_value);
 }
 </script>
